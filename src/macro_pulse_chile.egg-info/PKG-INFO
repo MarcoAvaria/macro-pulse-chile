@@ -1,0 +1,17 @@
+Metadata-Version: 2.4
+Name: macro-pulse-chile
+Version: 0.1.0
+Summary: Observatorio macroeconómico local-first de Chile y referentes internacionales.
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: streamlit>=1.32.0
+Requires-Dist: pandas>=2.2.0
+Requires-Dist: plotly>=5.19.0
+Requires-Dist: duckdb>=0.10.0
+Requires-Dist: pydantic>=2.6.0
+Requires-Dist: requests>=2.31.0
+Requires-Dist: python-dotenv>=1.0.1
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0.0; extra == "dev"
+Requires-Dist: black>=24.2.0; extra == "dev"
+Requires-Dist: ruff>=0.3.0; extra == "dev"

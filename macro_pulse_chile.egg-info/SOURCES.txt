@@ -1,0 +1,7 @@
+main.py
+pyproject.toml
+macro_pulse_chile.egg-info/PKG-INFO
+macro_pulse_chile.egg-info/SOURCES.txt
+macro_pulse_chile.egg-info/dependency_links.txt
+macro_pulse_chile.egg-info/requires.txt
+macro_pulse_chile.egg-info/top_level.txt

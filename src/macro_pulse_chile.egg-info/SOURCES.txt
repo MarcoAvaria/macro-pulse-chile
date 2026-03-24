@@ -1,0 +1,10 @@
+pyproject.toml
+src/config/catalog.py
+src/connectors/fred.py
+src/connectors/world_bank.py
+src/domain/models.py
+src/macro_pulse_chile.egg-info/PKG-INFO
+src/macro_pulse_chile.egg-info/SOURCES.txt
+src/macro_pulse_chile.egg-info/dependency_links.txt
+src/macro_pulse_chile.egg-info/requires.txt
+src/macro_pulse_chile.egg-info/top_level.txt
