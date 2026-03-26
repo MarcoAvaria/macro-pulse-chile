@@ -1,4 +1,8 @@
-﻿from src.config.catalog import get_catalog
+﻿import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from src.config.catalog import get_catalog
 from src.connectors.world_bank import WorldBankConnector
 
 if __name__ == "__main__":

@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from src.config.catalog import get_catalog
 from app.ui.cache import get_cached_series
+from src.domain.models import SeriesUnit
 
 def render_report_page():
     
@@ -22,10 +23,18 @@ def render_report_page():
             variacion = ultimo['value'] - penultimo['value']
             fecha_corta = ultimo['date'].strftime('%b %Y')
             
+            if serie_config.unit == SeriesUnit.PERCENTAGE:
+                # Tasas de interés o inflación: variación en puntos porcentuales (pp)
+                delta_str = f"{variacion:+.2f} pp vs ant."
+            else:
+                # Valores absolutos: crecimiento porcentual relativo
+                pct_variacion = (variacion / penultimo['value']) * 100 if penultimo['value'] != 0 else 0.0
+                delta_str = f"{variacion:+,.2f} ({pct_variacion:+.2f}%) vs ant."
+
             metricas.append({
                 "label": f"{serie_config.name} ({fecha_corta})",
                 "value": f"{ultimo['value']:,.2f}",
-                "delta": f"{variacion:,.2f} vs anterior",
+                "delta": delta_str,
                 "help": f"Fuente: {serie_config.source.value.upper()} | ID: {serie_config.source_id}"
             })
     

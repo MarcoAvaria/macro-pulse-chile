@@ -7,6 +7,7 @@ class DataSource(str, Enum):
     WORLD_BANK = "world_bank"
     FRED = "fred"
     BCCH = "bcch"
+    CMF = "cmf"
 
 class Frequency(str, Enum):
     """Frecuencias de tiempo estandarizadas"""
@@ -15,6 +16,12 @@ class Frequency(str, Enum):
     QUARTERLY = "Q"
     ANNUAL = "A"
 
+class SeriesUnit(str, Enum):
+    """Unidades de medida para dar contexto a los valores"""
+    PERCENTAGE = "percentage"
+    CURRENCY = "currency"
+    INDEX = "index"
+
 class SeriesConfig(BaseModel):
     """Modelo que define una serie macroeconómica a observar"""
     id: str = Field(..., description="ID interno en nuestro sistema (ej: 'cl_gdp_annual')")
@@ -22,4 +29,5 @@ class SeriesConfig(BaseModel):
     source: DataSource = Field(..., description="Fuente oficial de los datos")
     source_id: str = Field(..., description="ID exacto que usa la API de origen (ej: 'NY.GDP.MKTP.CD')")
     frequency: Frequency = Field(..., description="Frecuencia esperada")
+    unit: SeriesUnit = Field(default=SeriesUnit.INDEX, description="Unidad de medida de la serie")
     description: Optional[str] = Field(default=None, description="Contexto opcional de la serie")
