@@ -5,6 +5,7 @@ from app.ui.report import render_report_page
 from app.ui.cache import get_cached_series
 from src.services.data_manager import DataManager
 from dotenv import load_dotenv
+from datetime import datetime
 
 # Cargar variables de entorno al iniciar la aplicación
 load_dotenv(override=True)
@@ -20,6 +21,20 @@ def main():
     # Menú lateral simple para el MVP
     menu = ["Inicio", "Series", "Comparar", "Reporte"]
     eleccion = st.sidebar.selectbox("Navegación", menu)
+
+    # Filtro temporal global
+    st.sidebar.divider()
+    st.sidebar.subheader("⚙️ Filtros Globales")
+    if "start_year" not in st.session_state:
+        st.session_state.start_year = 2010
+        
+    st.session_state.start_year = st.sidebar.slider(
+        "Analizar desde el año:",
+        min_value=1990,
+        max_value=datetime.now().year,
+        value=st.session_state.start_year,
+        step=1
+    )
 
     # Botón para refrescar la base de datos
     st.sidebar.divider()

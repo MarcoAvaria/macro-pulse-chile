@@ -8,6 +8,7 @@ class DataSource(str, Enum):
     FRED = "fred"
     BCCH = "bcch"
     CMF = "cmf"
+    DATOS_GOB = "datos_gob"
 
 class Frequency(str, Enum):
     """Frecuencias de tiempo estandarizadas"""

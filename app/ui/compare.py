@@ -3,6 +3,8 @@ import plotly.express as px
 import pandas as pd
 from src.config.catalog import get_catalog
 from app.ui.cache import get_cached_series
+from src.transform.frequencies import normalize_frequency
+from src.transform.variations import calculate_variation
 
 def render_compare_page():
     st.title("⚖️ Comparador de Series")
@@ -26,6 +28,19 @@ def render_compare_page():
             "Gráfico único (Escalas originales)"
         ]
     )
+    
+    frecuencia = st.radio(
+        "Normalizar frecuencia temporal:",
+        options=["Diaria (Original)", "Mensual (Promedio)", "Anual (Promedio)"],
+        horizontal=True
+    )
+    freq_dict = {"Diaria (Original)": "D", "Mensual (Promedio)": "M", "Anual (Promedio)": "A"}
+    
+    tipo_valor = st.radio(
+        "Análisis de Tendencia:",
+        options=["Valor Absoluto", "MoM (Variación Mensual %)", "YoY (Variación Interanual %)"],
+        horizontal=True
+    )
 
     if selecciones:
         df_lista = []
@@ -43,6 +58,18 @@ def render_compare_page():
             
             # 1. Convertir strings a fechas reales para alinear frecuencias
             df_final['date'] = pd.to_datetime(df_final['date_str'], format='mixed')
+            
+            # Aplicar filtro temporal global
+            start_year = st.session_state.get('start_year', 2010)
+            df_final = df_final[df_final['date'].dt.year >= start_year]
+
+            # 2. Aplicar capa de transformación
+            df_final = normalize_frequency(df_final, freq_dict[frecuencia])
+            
+            # 3. Aplicar variación si se solicita
+            if tipo_valor != "Valor Absoluto":
+                df_final = calculate_variation(df_final, tipo_valor)
+                st.info(f"💡 Se aplicó la transformación matemática **{tipo_valor}**. La frecuencia fue ajustada a Mensual automáticamente para el cálculo.", icon="ℹ️")
             
             if modo_vis == "Gráfico único (Normalizado a Base 100)":
                 # Ordenar cronológicamente para asegurar que el cálculo tome el primer dato real

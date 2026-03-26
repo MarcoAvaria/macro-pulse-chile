@@ -90,6 +90,15 @@ DEFAULT_CATALOG = [
         frequency=Frequency.MONTHLY,
         unit=SeriesUnit.PERCENTAGE,
         description="Tasa Máxima Convencional aplicable a operaciones de crédito, fijada por la CMF."
+    ),
+    SeriesConfig(
+        id="cl_unemployment_monthly",
+        name="Desempleo Nacional (% mensual)",
+        source=DataSource.FRED,
+        source_id="LRHUTTTTCLM156S",
+        frequency=Frequency.MONTHLY,
+        unit=SeriesUnit.PERCENTAGE,
+        description="Tasa de desempleo mensual para Chile (15 años o más), ajustada estacionalmente."
     )
 ]
 

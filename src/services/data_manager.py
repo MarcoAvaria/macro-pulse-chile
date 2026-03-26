@@ -5,6 +5,7 @@ from src.connectors.world_bank import WorldBankConnector
 from src.connectors.fred import FREDConnector
 from src.connectors.bcch import BCChConnector
 from src.connectors.cmf import CMFConnector
+from src.connectors.datos_gob import DatosGobConnector
 from src.storage.local_db import LocalStorage
 from src.domain.models import DataSource
 
@@ -18,6 +19,7 @@ class DataManager:
         self.fred = FREDConnector()
         self.bcch = BCChConnector()
         self.cmf = CMFConnector()
+        self.datos_gob = DatosGobConnector()
 
     def get_series_data(self, indicator_id: str) -> pd.DataFrame:
         """Retorna los datos de una serie, priorizando la base de datos local."""
@@ -42,6 +44,8 @@ class DataManager:
         elif serie_config.source == DataSource.CMF:
             # Limitamos el rango para no sobrecargar la API de CMF
             df = self.cmf.fetch_series(serie_config.source_id, start_date="2023-01-01", end_date=datetime.now().strftime("%Y-%m-%d"))
+        elif serie_config.source == DataSource.DATOS_GOB:
+            raise NotImplementedError("La integración con DIPRES requiere mapeo de columnas específico en src/transform/")
 
         # 4. Guardar en DuckDB para futuras consultas y retornar
         if not df.empty:
