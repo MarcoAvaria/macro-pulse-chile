@@ -4,7 +4,7 @@
 Macro Pulse Chile es un observatorio macroeconomico local-first para comparar Chile con referentes internacionales usando fuentes oficiales y gratuitas. El MVP debe descargar, normalizar, comparar, visualizar y exportar un set cerrado de series sin ampliar el scope.
 
 ## Stack y restricciones
-- Python 3.11+, Streamlit, Pandas, Plotly, DuckDB, Pydantic, Requests y python-dotenv.
+- Python 3.12+, Streamlit, Pandas, Plotly, DuckDB, Pydantic, Requests y python-dotenv.
 - Calidad y testing: pytest, Ruff y Black.
 - Local-first, sin hosting pagado, sin login, sin frontend separado y sin microservicios.
 - Fuentes del nucleo MVP: World Bank y FRED. BCCh solo si no bloquea el avance.

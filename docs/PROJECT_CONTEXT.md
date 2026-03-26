@@ -59,7 +59,7 @@ Recién si el proyecto entra en una fase donde debugging, profiling o testing Py
 ## 7) Stack recomendado para el MVP
 
 ### Núcleo recomendado
-- **Python 3.11+**
+- **Python 3.12+**
 - **Streamlit** o **Taipy** para UI local rápida
 - **Pandas** para transformación de datos
 - **Polars** opcional si más adelante conviene por rendimiento

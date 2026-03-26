@@ -2,7 +2,7 @@ Metadata-Version: 2.4
 Name: macro-pulse-chile
 Version: 0.1.0
 Summary: Observatorio macroeconómico local-first de Chile y referentes internacionales.
-Requires-Python: >=3.11
+Requires-Python: >=3.12
 Description-Content-Type: text/markdown
 Requires-Dist: streamlit>=1.32.0
 Requires-Dist: pandas>=2.2.0

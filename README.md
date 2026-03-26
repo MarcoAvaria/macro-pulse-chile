@@ -1,6 +1,6 @@
 ﻿# Macro Pulse Chile 🇨🇱 📊
 
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.32+-red.svg)](https://streamlit.io/)
 [![DuckDB](https://img.shields.io/badge/DuckDB-Local_First-yellow.svg)](https://duckdb.org/)
 [![Status](https://img.shields.io/badge/Estado-MVP_v0.1.0-brightgreen.svg)]()
