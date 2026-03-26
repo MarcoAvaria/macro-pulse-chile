@@ -306,3 +306,21 @@ La v0.1 está terminada si:
 ## 18) Resumen ejecutivo en una línea
 
 **Macro Pulse Chile debe nacer como un observatorio técnico sobrio, local, reproducible y explicable, no como una plataforma gigante.**
+
+## 19) Roadmap Futuro (Post-MVP / v0.3+)
+
+Con el MVP inicial (v0.2.0) completado y estable, las futuras iteraciones se enfocarán en profundizar el análisis y la calidad sin comprometer la arquitectura local-first.
+
+### 1. Profundidad Analítica (Capa `transform` y `ui`)
+- **Filtros Temporales Globales:** Controles en la barra lateral para recortar el análisis a ventanas específicas (ej. "Desde 2019").
+- **Análisis de Tendencias (YoY / MoM):** Switches para visualizar variaciones porcentuales Interanuales (Year-over-Year) y Mensuales (Month-over-Month).
+- **Suavizado de Curvas:** Implementación de promedios móviles (30/90 días) para indicadores de alta volatilidad (Tipo de Cambio, Cobre).
+
+### 2. Expansión de Fronteras (Capa `connectors`)
+- **datos.gob.cl / DIPRES:** Integración de ejecución presupuestaria u otros datasets cívicos.
+- **Indicadores Laborales:** Búsqueda de fuentes oficiales para medir creación de empleo.
+- **Mercados Financieros:** Explorar conectores (ej. `yfinance`) de forma aislada para comparar la economía real vs. índices bursátiles (IPSA, S&P 500).
+
+### 3. Calidad de Software y DevOps
+- **Integración Continua (CI):** Implementar GitHub Actions para ejecutar automáticamente la suite de Pytest en cada push.
+- **Mantenimiento Local:** Crear un proceso de "recolección de basura" (Garbage Collection) para limpiar registros obsoletos en DuckDB y mantener la ligereza del proyecto.
