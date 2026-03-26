@@ -29,5 +29,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Ejecutar pruebas automatizadas (Pytest)
+      env:
+        PYTHONPATH: .
       run: |
         pytest tests/ -v
